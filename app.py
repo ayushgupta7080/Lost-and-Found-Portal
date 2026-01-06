@@ -17,23 +17,16 @@ class Base(DeclarativeBase):
 db = SQLAlchemy(model_class=Base)
 login_manager = LoginManager()
 
-# Base directory of the project
-basedir = os.path.abspath(os.path.dirname(__file__))
-
-# Ensure instance folder exists (IMPORTANT FOR RENDER)
-instance_path = os.path.join(basedir, "instance")
-if not os.path.exists(instance_path):
-    os.makedirs(instance_path)
-
 # Create the app
 app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key")
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
-# Configure the SQLite database (Render-safe)
+# Configure SQLite database (RENDER FREE TIER SAFE)
+# Render free tier allows write access only to /tmp
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
     "DATABASE_URL",
-    "sqlite:///" + os.path.join(instance_path, "lost_and_found.db")
+    "sqlite:////tmp/lost_and_found.db"
 )
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
