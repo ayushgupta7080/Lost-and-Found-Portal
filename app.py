@@ -50,3 +50,6 @@ with app.app_context():
 
     # Create default categories
     create_default_categories()
+
+import app_routes
+
