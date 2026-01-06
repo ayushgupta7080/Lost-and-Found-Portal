@@ -18,7 +18,8 @@
         </div>
         
         <div class="auth-body">
-            <form method="post" class="auth-form needs-validation" novalidate>
+            <form method="post" action="{{ url_for('login') }}" class="auth-form needs-validation" novalidate>
+
                 {{ form.hidden_tag() }}
                 
                 <div class="form-group mb-3">
@@ -59,3 +60,4 @@
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 {% endblock %}
+
