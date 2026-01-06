@@ -1,85 +1,95 @@
-# Lost & Found Portal
+Lost & Found Portal
 
-The **Lost & Found Portal** is a web-based application designed to help people report, search, and track lost or found items. It allows users to post detailed information about items (with images), search and filter results, and connect with others to return belongings to their rightful owners.
+The Lost & Found Portal is a web-based application designed to help users report, search, and recover lost or found items efficiently. The platform allows users to post detailed item information with images, browse and filter listings, and connect with others to return belongings to their rightful owners. This project focuses on practical backend-driven web development using Flask, along with clean UI templates and structured database handling. It is built as a real-world CRUD-based system and is under active development.
 
-This project demonstrates practical full-stack development skills using **Flask, SQLite, Bootstrap, HTML, and CSS**, with an emphasis on usability and clean design.
+Key Features
 
----
+User authentication with registration and login using session-based security
 
-## ✨ Features
+Reporting lost and found items with title, description, category, location, date, and images
 
-- **User Authentication** – Secure registration and login.  
-- **Report Lost/Found Items** – Post details including title, description, category, location, date, and images.  
-- **Search & Filter** – Find items quickly by keywords, category, date, or location.  
-- **Image Uploads** – Attach photos for better identification.  
-- **Track Item Status** – Update and monitor statuses (Lost → Found → Returned).  
-- **User Dashboard** – Manage and view your posted items.  
-- **Contact System** – Connect with the person who posted an item.  
-- **About Us Page** – Briefly explains the mission and working of the portal.  
+Search and filter functionality to quickly find relevant items
 
----
+Image upload support for better item identification
 
-## 🛠️ Tech Stack
+Item status tracking (Lost → Found → Returned)
 
-- **Frontend**: HTML5, CSS3, Bootstrap  
-- **Backend**: Python Flask  
-- **Database**: SQLite (configurable for MySQL)  
-- **Other Tools**: Jinja2 Templates, Werkzeug Authentication  
+User dashboard to view and manage posted items
 
----
+Contact flow between users to facilitate item recovery
 
-## 📂 Project Structure
+Custom error handling pages (403, 404, 500) for improved user experience
+
+Tech Stack
+
+Backend: Python, Flask
+
+Frontend: HTML5, CSS3, Bootstrap
+
+Templating Engine: Jinja2
+
+Database: SQLite (extendable to MySQL/PostgreSQL)
+
+Authentication: Flask session management, Werkzeug security utilities
+
+Project Structure
+
 Lost-and-Found-Portal/
 │
-├── static/          # CSS, JS, Images
-├── templates/       # HTML templates
-├── app.py           # Flask app entry point
-├── models.py        # Database models
-├── requirements.txt # Dependencies
-└── README.md        # Project documentatio
+├── static/ # CSS, JavaScript, images, uploads
+├── templates/ # HTML templates (auth, dashboard, items, errors)
+├── instance/ # SQLite database (local)
+├── app.py # Main Flask application
+├── app_routes.py # Route definitions
+├── models.py # Database models
+├── forms.py # Form handling logic
+├── utils.py # Utility/helper functions
+├── requirements.txt # Project dependencies
+├── .env.example # Environment variable template
+└── README.md # Project documentation
 
----
+How to Run Locally
 
-## 🚀 Setup Instructions
+Clone the repository
+git clone https://github.com/ayushgupta7080/Lost-and-Found-Portal.git
 
-1. **Clone the repository**
-   git clone https://github.com/your-username/Lost-and-Found-Portal.git
-   cd Lost-and-Found-Portal
+cd Lost-and-Found-Portal
 
-2. **Create a virtual environment & activate**
-   python -m venv venv
-   source venv/bin/activate   # Linux/Mac
-   venv\Scripts\activate      # Windows
+Create and activate a virtual environment
+python -m venv venv
+venv\Scripts\activate (Windows)
+source venv/bin/activate (Linux/Mac)
 
-3. **Install dependencies**
-   pip install -r requirements.txt
+Install dependencies
+pip install -r requirements.txt
 
-4. **Run the app**
-   flask run
-   Open in browser → http://127.0.0.1:5000  
+Configure environment variables
+Copy .env.example to .env and update values if required
 
----
+Run the application
+flask run
 
-## 📸 Screenshots
+Open your browser at http://127.0.0.1:5000
 
-(Add your screenshots here after customizing UI)
+Project Status
 
-- Home Page  
-- Search & Filter Page  
-- Dashboard Page  
-- Item Posting Form  
+Under active development. Core functionality is implemented, and the project is being improved with bug fixes, feature enhancements, and deployment-ready configuration.
 
----
+Planned Enhancements
 
-## 🔮 Future Enhancements
+Email notifications for matched lost and found items
 
-- Email notifications for matched lost/found items.  
-- Google Maps integration for precise location tagging.  
-- Admin panel for better management.  
-- Reporting system for fake or spam posts.  
+Location-based search and map integration
 
----
+Admin panel for moderation and management
 
-## 👨‍💻 Author
+Improved matching logic between lost and found items
 
-Developed by **AYUSH GUPTA** as a full-stack project to showcase skills in Python Flask, Bootstrap, and database integration.
+Cloud deployment and live demo
+
+Author
+
+Ayush Gupta
+B.Sc. IT | Backend & Full-Stack Development Enthusiast
+
+This project was developed to demonstrate practical skills in Flask backend development, database integration, authentication, and real-world web application design.
