@@ -1,0 +1,17 @@
+{% extends "portal/base.html" %}
+{% block content %}
+<h2 class="mb-3">All Items</h2>
+<ul>
+  {% for item in items %}
+    <li>
+      <a href="{% url 'item_detail' item.id %}">{{ item.name }}</a>
+      - {{ item.item_type }}
+      {% if item.is_claimed %}
+        (Claimed)
+      {% endif %}
+    </li>
+  {% empty %}
+    <p>No items yet.</p>
+  {% endfor %}
+</ul>
+{% endblock %}

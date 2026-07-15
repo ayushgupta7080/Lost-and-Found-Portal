@@ -1,0 +1,46 @@
+<!-- portal/templates/portal/home.html -->
+{% extends 'portal/base.html' %}
+{% block title %}Home - Lost & Found{% endblock %}
+{% block content %}
+<h2 class="mb-3">Lost Items</h2>
+<div class="row">
+  {% for item in lost_items %}
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        {% if item.image %}<img src="{{ item.image.url }}" class="card-img-top" alt="">{% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text">{{ item.location }}</p>
+          <span class="badge bg-primary">Lost</span>
+          {% if item.is_claimed %}<span class="badge bg-secondary">Claimed</span>{% endif %}
+          {% if item.returned %}<span class="badge bg-success">Returned</span>{% endif %}
+          <a class="btn btn-sm btn-outline-primary mt-2" href="{% url 'lost_detail' item.pk %}">Details</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No lost items.</p>
+  {% endfor %}
+</div>
+
+<h2 class="my-3">Found Items</h2>
+<div class="row">
+  {% for item in found_items %}
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        {% if item.image %}<img src="{{ item.image.url }}" class="card-img-top" alt="">{% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text">{{ item.location }}</p>
+          <span class="badge bg-success">Found</span>
+          {% if item.is_claimed %}<span class="badge bg-secondary">Claimed</span>{% endif %}
+          {% if item.returned %}<span class="badge bg-success">Returned</span>{% endif %}
+          <a class="btn btn-sm btn-outline-primary mt-2" href="{% url 'found_detail' item.pk %}">Details</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No found items.</p>
+  {% endfor %}
+</div>
+{% endblock %}

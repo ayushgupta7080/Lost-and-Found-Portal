@@ -1,0 +1,36 @@
+<!-- portal/templates/portal/item_detail.html -->
+{% extends 'portal/base.html' %}
+{% block title %}Item Details{% endblock %}
+{% block content %}
+<div class="card">
+  {% if item.image %}<img src="{{ item.image.url }}" class="card-img-top" alt="">{% endif %}
+  <div class="card-body">
+    <h4 class="card-title">{{ item.title }}</h4>
+    <p class="card-text">{{ item.description }}</p>
+    <p><strong>Category:</strong> {{ item.category }}</p>
+    <p><strong>Location:</strong> {{ item.location }}</p>
+    {% if kind == 'lost' %}
+      <span class="badge bg-primary">Lost</span>
+      <p class="text-muted mt-2">Date Lost: {{ item.date_lost }}</p>
+      {% if item.is_claimed %}<span class="badge bg-secondary">Claimed</span>{% endif %}
+      {% if item.returned %}<span class="badge bg-success">Returned</span>{% endif %}
+      {% if request.user.is_staff and not item.returned %}
+        <a class="btn btn-outline-success mt-2" href="{% url 'mark_returned' 'Lost' item.pk %}">Mark Returned</a>
+      {% endif %}
+    {% else %}
+      <span class="badge bg-success">Found</span>
+      <p class="text-muted mt-2">Date Found: {{ item.date_found }}</p>
+      {% if item.is_claimed %}<span class="badge bg-secondary">Claimed</span>{% else %}
+        {% if user.is_authenticated and not item.returned %}
+          <a class="btn btn-success" href="{% url 'claim_found_item' item.pk %}">Claim this Item</a>
+        {% endif %}
+      {% endif %}
+      {% if item.returned %}<span class="badge bg-success">Returned</span>{% endif %}
+      {% if request.user.is_staff and not item.returned %}
+        <a class="btn btn-outline-success mt-2" href="{% url 'mark_returned' 'Found' item.pk %}">Mark Returned</a>
+      {% endif %}
+    {% endif %}
+    <a class="btn btn-secondary mt-3" href="{% url 'home' %}">Back</a>
+  </div>
+</div>
+{% endblock %}

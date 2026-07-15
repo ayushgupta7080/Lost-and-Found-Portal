@@ -1,0 +1,11 @@
+<!-- portal/templates/portal/post_lost_item.html -->
+{% extends 'portal/base.html' %}
+{% block title %}Report Lost Item{% endblock %}
+{% block content %}
+<h3>Report Lost Item</h3>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-warning" type="submit">Submit</button>
+</form>
+{% endblock %}

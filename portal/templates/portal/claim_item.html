@@ -1,0 +1,11 @@
+{% extends "portal/base.html" %}
+{% block content %}
+<h2>Claim Item: {{ item.name }}</h2>
+<p>Are you sure you want to claim this item?</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-success">Yes, Claim</button>
+  <a href="{% url 'item_detail' item.id %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
